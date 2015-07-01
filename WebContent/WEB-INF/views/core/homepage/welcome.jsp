@@ -19,7 +19,6 @@ a.latest-version{color:red;}
 </style>
 </head>
 <body class="c-body">
-<p class="welcome">欢迎使用专业的JAVA内容管理系统 -- Jspxcms内容管理系统。</p>
 <!-- 
 <h1 class="bar">安全提示</h1>
  -->
