@@ -47,29 +47,40 @@
 		<!-- /end header -->
 		<div class="container">
 			<div class="row-fluid bannerbg">
+				<!-- 图片新闻 -->
 				<div class="camera_wrap pattern_4 camera_emboss span8"
 					id="camera_wrap_4">
-					<div data-src="_files/img/demo/1.jpg"></div>
-					<div data-src="_files/img/demo/2.jpg"></div>
-					<div data-src="_files/img/demo/3.jpg"></div>
-					<div data-src="_files/img/demo/4.jpg"></div>
+					[@InfoList nodeId=119 limit=4;list]
+						[#list list as info]
+							[#list info.images as image]
+								<div data-src="${image.image}"></div>
+           					[/#list]
+						[/#list]
+					[/@InfoList]
 				</div>
 				<div class=" span4 rightnews">
-					<h4>要闻 NEW</h4>
+					<h4>要闻 NEWS</h4>
 					<ol class="news_li">
-						<li><a href="news.html" class="text-info">新疆交通建设管理局暨设计院调研组一行赴准东调研…</a>
-							<samp>2015-05-12</samp></li>
-						<li><a href="news.html" class="text-info">新疆交通建设管理局暨设计院调研…</a>
-							<samp>2015-05-12</samp></li>
-						<li><a href="news.html" class="text-info">新疆交通建设管理局暨设计院管理局暨设计院调研组一行赴准行赴准东调研…</a>
-							<samp>2015-05-12</samp></li>
-						<li><a href="news.html" class="text-info">新疆交通建设管理局暨管理局暨设计院调研组一行赴准东调研…</a>
-							<samp>2015-05-12</samp></li>
-						<li><a href="news.html" class="text-info">新疆交通建设管理赴准东调研…</a>
-							<samp>2015-05-12</samp></li>
+						[@InfoList nodeId=36 limit=5 attr="focus";list]
+							[#list list as info]
+								<li>
+									<a href="${info.url}" class="text-info"> ${info.title}…</a>
+									<samp> [${info.publishDate?string('yyyy-MM-dd')}] </samp>
+								</li>
+							[/#list]
+						[/@InfoList]
 					</ol>
 				</div>
 			</div>
+			<!-- 最新通知 -->
+			[@InfoList nodeId=108 limit=1;list]
+				[#list list as info]
+					<div class="alert alert-success" style=" margin-top:10px; margin-bottom: 0px;">
+		            	<button type="button" class="close" data-dismiss="alert">×</button>
+						<strong>最新通知：</strong> ${info.title} <samp>[${info.publishDate?string('yyyy-MM-dd')}]</samp>
+			        </div>
+				[/#list]
+			[/@InfoList]
 			<!--新闻-->
 			<div id="content">
 				<div class="boxportfolio3">
@@ -79,22 +90,14 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=36 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
@@ -106,22 +109,14 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=108 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
@@ -184,22 +179,14 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=110 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
@@ -211,29 +198,20 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=109 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- Carousel List
-	================================================== -->
+			<!-- Carousel List ================================================== -->
 			<div class="left422">
 				<div class="titleborder ">
 					<div>图解准东</div>
@@ -248,174 +226,23 @@
 							<div class="clearfix"></div>
 							<div class="heightauto">
 								<ul id="recent-projects" class="heightauto">
-									<!--featured-projects 1-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps001.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">宜化</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 2-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps002.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">露天煤矿</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 3-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps003.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">水库</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 4-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps004.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">展览中心</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 5-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps005.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">铁路</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 6-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps006.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">铁路设施</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 7-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps007.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">公路工程</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 8-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps008.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">铁路设施</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 9-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps009.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">铁路运输</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 10-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps010.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">其亚铝业</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 11-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps011.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">神火煤电</a>
-												</h1>
-											</div>
-										</div>
-									</li>
-									<!--featured-projects 12-->
-									<li>
-										<div class="featured-projects">
-											<div class="featured-projects-image">
-												<a href="#"><img src="_files/img/demo/ps012.jpg"
-													class="imgOpa" alt=""></a>
-											</div>
-											<div class="featured-projects-content">
-												<h1>
-													<a href="#">神火煤电</a>
-												</h1>
-											</div>
-										</div>
-									</li>
+									[@InfoList nodeId=120 limit=12;list]
+										[#list list as info]
+											<li>
+												<div class="featured-projects">
+													<div class="featured-projects-image">
+														<a href="${info.url}"><img src="${info.smallImage}"
+															class="imgOpa" alt=""></a>
+													</div>
+													<div class="featured-projects-content">
+														<h1>
+															<a href="${info.url}">${info.title}</a>
+														</h1>
+													</div>
+												</div>
+											</li>
+										[/#list]
+									[/@InfoList]
 								</ul>
 							</div>
 						</div>
@@ -432,22 +259,14 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=112 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
@@ -486,22 +305,14 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=113 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
@@ -522,22 +333,14 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=111 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
@@ -576,22 +379,14 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=114 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
@@ -760,6 +555,11 @@
 ================================================== -->
 	</div>
 	
+	<!-- 微信-toTop代码开始 -->
+	<div id="code"></div>
+	<div id="code_img"></div>
+	<a id="gotop" href="javascript:void(0)"></a>
+	<!-- 代码结束 -->
 	<script src="_files/js/jquery.js"></script>
 	<script src="_files/js/bootstrap.js"></script>
 	<script src="_files/js/plugins.js"></script>
@@ -898,10 +698,5 @@
 			});
 		});
 	</script>
-	<!-- 代码开始 -->
-	<div id="code"></div>
-	<div id="code_img"></div>
-	<a id="gotop" href="javascript:void(0)"></a>
-	<!-- 代码结束 -->
 </body>
 </html>

@@ -1,9 +1,9 @@
-<header>
+		<header>
 			<div class="container clearfix">
 				<div class="row-fluid">
 					<div class="span12">
 						<h1 class="brandlogo">
-							<a href="index.html"><img src="_files/img/logo.png" alt=""></a>
+							<a href="${ctx}/"><img src="_files/img/logo.png" alt=""></a>
 						</h1>
 						<div class="topinfo">
 							<div class="infophone">
@@ -13,16 +13,20 @@
 							</div>
 							<div class="infoaddress">
 								<p style="padding-top: 10px;">
-									<a class="text-info" href="list.html">准东新闻</a> | <a
-										class="text-info" href="list.html">通知公告</a> | <a
-										class="text-info" href="list.html">经济发展</a> | <a
-										class="text-info" href="list.html">党群建设</a> | <a
-										class="text-info" href="list.html">政务公示</a><br> <a
-										class="text-info" href="list.html">法律服务</a> | <a
-										class="text-info" href="list.html">环保事务</a> | <a
-										class="text-info" href="list.html">干部培训</a> | <a
-										class="text-info" href="list.html">安全生产</a> | <a
-										class="text-info" href="list.html">网上办事</a>
+									[#assign node_count=0 /]
+									[@NodePage parentId=86 pageSize=5 page=1;list]
+										[#list list.content as cnode]
+											[#assign node_count=node_count+1 /]
+											<a class="text-info" href="${cnode.url}">${cnode.name}</a>[#if node_count < 5] |[#else]<br>[/#if] 
+										[/#list]
+									[/@NodePage]
+									[#assign node_count=0 /]
+									[@NodePage parentId=86 pageSize=5 page=2;list]
+										[#list list.content as cnode]
+											[#assign node_count=node_count+1 /]
+											<a class="text-info" href="${cnode.url}">${cnode.name}</a>[#if node_count < 5] |[/#if] 
+										[/#list]
+									[/@NodePage]
 								</p>
 							</div>
 						</div>
@@ -30,65 +34,38 @@
 						<div class="row-nav navbar">
 							<div class="navbar-inner">
 								<ul id="nav" class="nav">
-									<li class="active selected"><a href="index.html">首页</a></li>
-									<li class="divider-vertical"></li>
-									<li class="dropdown"><a href="#" class="dropdown-toggle"
-										data-toggle="dropdown">关于准东 <b class="caret"></b></a>
-										<ul class="dropdown-menu js-activated" style="display: none;">
-											<li><a href="about.html">准东概况</a></li>
-											<li><a href="geography.html">地理资源</a></li>
-											<li><a href="infrastructure.html">基础建设</a></li>
-											<li><a href="organizational.html">组织架构</a></li>
-											<!--.dropdown-->
-										</ul></li>
-									<li class="divider-vertical"></li>
-									<li class="dropdown"><a href="#" class="dropdown-toggle"
-										data-toggle="dropdown">经济发展 <b class="caret"></b></a>
-										<ul class="dropdown-menu js-activated" style="display: none;">
-											<li><a href="404.html">煤炭产业</a></li>
-											<li><a href="404.html">煤电产业</a></li>
-											<li><a href="404.html">煤化工产业</a></li>
-											<li><a href="404.html">煤电冶产业</a></li>
-											<li><a href="404.html">煤制天然气</a></li>
-											<li><a href="404.html">新材料产业</a></li>
-											<li><a href="404.html">光伏产业</a></li>
-											<!--.dropdown-->
-										</ul></li>
-									<li class="divider-vertical"></li>
-									<li class="dropdown"><a href="#" class="dropdown-toggle"
-										data-toggle="dropdown">园区规划 <b class="caret"></b></a>
-										<ul class="dropdown-menu js-activated" style="display: none;">
-											<li><a href="404.html">规划体系</a></li>
-											<li><a href="404.html">发展目标</a></li>
-											<li><a href="404.html">重大决策</a></li>
-											<li><a href="404.html">世界铝都计划</a></li>
-											<!--.dropdown-->
-										</ul></li>
-									<li class="divider-vertical"></li>
-									<li class="dropdown"><a href="#" class="dropdown-toggle"
-										data-toggle="dropdown">招商引资 <b class="caret"></b></a>
-										<ul class="dropdown-menu js-activated" style="display: none;">
-											<li><a href="404.html">投资优势</a></li>
-											<li><a href="404.html">优惠政策</a></li>
-											<li><a href="404.html">招商项目</a></li>
-											<!--.dropdown-->
-										</ul></li>
-									<li class="divider-vertical"></li>
-									<li class="dropdown"><a href="#" class="dropdown-toggle"
-										data-toggle="dropdown">园区企业 <b class="caret"></b></a>
-										<ul class="dropdown-menu js-activated" style="display: none;">
-											<li><a href="404.html">企业目录</a></li>
-											<li><a href="404.html">企业新闻</a></li>
-											<li><a href="404.html">企业产品</a></li>
-											<!--.dropdown-->
-										</ul></li>
-									<li class="divider-vertical"></li>
+									[@NodeList parentId=85;list]
+							        	<li class="[#if node??&&node.id=1]active[/#if]" id="node_header_index"><a href='${ctx}/'>首页</a></li>  
+										[#list list as cnode]
+											<li class="divider-vertical"></li>
+											[#if (cnode.children?size>0 && cnode.id != 79) ]
+							 		 			<li class="dropdown" id="node_header_${cnode.id}"><a href="${cnode.url}" class="dropdown-toggle" data-toggle="dropdown">${cnode.name} <b class="caret"></b></a>
+							 		 				<ul class="dropdown-menu js-activated" style="display: none;">
+								 		 			[#list cnode.children as n]
+								 		 				<li><a href="${n.url}">${n.name}</a></li>
+								 		 				[#if node??&&n.id=node.id][#assign node_header_active=cnode.id /][/#if]
+								 		 			[/#list]
+								 		 			</ul>
+							 		 			</li>
+						 		 			[#else]
+						 		 				<li class="[#if node??&&node.id=cnode.id]active[/#if]" id="node_header_${cnode.id}"><a href="${cnode.url}">${cnode.name}</a></li>
+						 		 			[/#if]
+										[/#list]
+									[/@NodeList]
 								</ul>
-								<form id="search" action="#" method="GET">
-									<input type="text"
+								<form id="search" action="${ctx}/search.jspx" method="GET">
+									<input type="text" id="s_q"
 										onfocus="if(this.value =='查找新闻' ) this.value=''"
-										onblur="if(this.value=='') this.value='查找新闻'" value="查找新闻"
-										name="s"> <a href="#"></a>
+										onblur="if(this.value=='') this.value='查找新闻'" [#if q_value??]value="${q_value}"[#else]value="查找新闻"[/#if]
+										name="q"> <a href="#" onclick="submit_search();></a>
+										 <script type="text/javascript">
+										 	function submit_search(){
+										 		if($('#s_q').val() == "查找清真餐饮企业"){
+										 			$('#s_q').val('');
+										 		}
+									 			$('#search').submit();
+										 	}
+										 </script>
 								</form>
 							</div>
 						</div>
