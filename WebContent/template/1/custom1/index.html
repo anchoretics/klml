@@ -403,74 +403,21 @@
 								<tr>
 									<td>
 										<ul>
-											<li class="span3">
-												<p style="margin: 0;">
-													<a href="#" class="muted">昌吉州人力资源社会保障厅</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">自治区商务厅</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">自治区国土资源厅</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">自治区人力资源社会保障厅</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">自治区城乡建设厅</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">自治区环境保护厅</a>
-												</p>
-											</li>
-											<li class="span3">
-												<p style="margin: 0;">
-													<a href="#" class="muted">自治区交通运输厅</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">自治区经济和信息化委员会</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">西部庭州</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">昌吉州安监局</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">新疆维吾尔自治区发改委</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">昌吉州经济和信息化委员会</a>
-												</p>
-											</li>
-											<li class="span3">
-												<p style="margin: 0;">
-													<a href="#" class="muted">木垒县政府网</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">奇台县政府网</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">昌吉国家农业科技园区</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">新疆维吾尔自治区安监局</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">阜康市政府网</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">昌吉州商务局</a>
-												</p>
-											</li>
-											<li class="span3">
-												<p style="margin: 0;">
-													<a href="#" class="muted">新疆维吾尔自治区经信委</a>
-												</p>
-												<p style="margin: 0;">
-													<a href="#" class="muted">新疆维吾尔自治区财政厅</a>
-												</p>
-											</li>
+										[#assign link_count=1/]
+									  	[@FriendlinkList type='zw' limit=24 ;list]
+									      	[#list list as link]
+									      		[#if (link_count-1)%6==0]
+												<li class="span3">
+									      		[/#if]
+													<p style="margin: 0;">
+														<a href="${link.url}" class="muted" target='_blank'>${link.name}</a>
+													</p>
+									      		[#if link_count%6==0]
+												</li>
+									      		[/#if]
+									      		[#assign link_count=link_count+1/]
+									      	[/#list]
+									    [/@FriendlinkList]
 										</ul>
 									</td>
 								</tr>
@@ -480,79 +427,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- FOOTER BEGIN
-================================================== -->
-		<div class="footer footerdark">
-			<div class="text-center wraptotop">
-				<a class="totop"><i class="icon-chevron-up"></i></a>
-			</div>
-			<div class="container">
-				<!-- 1st row -->
-				<div class="row-fluid">
-					<div class="span4">
-						<h1 class="title">
-							<i class="icon-heart"></i> 关于我们
-						</h1>
-						<hr>
-						<p>
-							公路、铁路、供水、供电、通信五大骨干基础设施一期工程已完工投运，二期全面开始建设。公路方面：新建总长138公里准东Z917主干公路全线通车，基本形成以国道216
-							……[ 详细内容 ]</p>
-					</div>
-					<div class="span4">
-						<h1 class="title">
-							<i class="icon-phone-sign"></i> 联系我们
-						</h1>
-						<hr>
-						<p>
-							联系地址：新疆昌吉州准东五彩湾管委会<br> 联系电话：0994-6738626 <br>
-						</p>
-					</div>
-					<div class="span4 lookme">
-						<h1 class="title">
-							<i class="icon-qrcode"></i> 关注我们
-						</h1>
-						<hr>
-						<ul>
-							<li>
-								<p>
-									<img src="_files/img/zdljl.jpg" style="width: 100px;" alt="" />
-								</p>
-								<p style="font-size: 12px; color: #FFFFFF;">准东开发区零距离</p>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 2nd row -->
-		<div class="footerbottom footerbottomdark">
-			<div class="container">
-				<div class="row-fluid">
-					<!-- left -->
-					<div class="span4 smallspacetop">
-						<p class="smaller">
-							<span class="copyright">© </span> Copyright 2015
-							国家级新疆准东经济技术开发区管理委员会
-						</p>
-					</div>
-					<!-- right -->
-					<div class="span8 smallspacetop">
-						<div class="pull-right smaller">
-							<ul class="footermenu">
-								<li><a href="#">进入企业邮箱</a></li>
-								<li><a href="#">进入办公OA系统</a></li>
-								<li><a
-									href="http://101.200.173.151/klml/新疆准东官网2015年改版之栏目结构设置.pdf">栏目结构</a></li>
-							</ul>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<!-- end right -->
-				</div>
-			</div>
-		</div>
-		<!-- FOOTER END
-================================================== -->
+		[#include "inc_footer.html" /]
 	</div>
 	
 	<!-- 微信-toTop代码开始 -->
@@ -568,8 +443,9 @@
 	<script src="_files/js/weixin.js"></script>
 	<!-- CALL CAMERA SLIDER -->
 	<script>
-		jQuery(function() {
-			jQuery('#camera_wrap_4').camera({
+		/* 滚动新闻大图 */
+		$(function() {
+			$('#camera_wrap_4').camera({
 				height : 'auto',
 				loader : 'bar',
 				pagination : false,
@@ -583,68 +459,9 @@
 				imagePath : '_files/img/'
 			});
 		});
-	</script>
-	<!-- CALL FEATURED WORK -->
-	<script type="text/javascript">
-		$(window).load(function() {
-			$('#recent-projects').carouFredSel({
-				responsive : true,
-				width : '100%',
-				auto : true,
-				circular : true,
-				infinite : false,
-				prev : {
-					button : "#car_prev",
-					key : "left",
-				},
-				next : {
-					button : "#car_next",
-					key : "right",
-				},
-				swipe : {
-					onMouse : true,
-					onTouch : true
-				},
-				scroll : 1500,
-				items : {
-					visible : {
-						min : 1,
-						max : 1
-					}
-				}
-			});
-		});
-	</script>
-	<!-- CALL ACCORDION -->
-	<script type="text/javascript">
-		$(".accordion h3").eq(0).addClass("active");
-		$(".accordion .accord_cont").eq(0).show();
-		$(".accordion h3").click(
-				function() {
-					$(this).next(".accord_cont").slideToggle("slow").siblings(
-							".accord_cont:visible").slideUp("slow");
-					$(this).toggleClass("active");
-					$(this).siblings("h3").removeClass("active");
-				});
-	</script>
-	<!-- Call opacity on hover images from recent news-->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("img.imgOpa").hover(function() {
-				$(this).stop().animate({
-					opacity : "0.6"
-				}, 'slow');
-			}, function() {
-				$(this).stop().animate({
-					opacity : "1.0"
-				}, 'slow');
-			});
-		});
-	</script>
-	<!--BEGIN DEMO PANEL
-================================================== -->
-	<!--瀑布流-->
-	<script>
+		
+		<!--BEGIN DEMO PANEL -->
+		<!--瀑布流-->
 		$(window).load(function() {
 			var $container = $('#content')
 			// initialize Isotope
@@ -666,9 +483,20 @@
 				});
 			});
 		});
-	</script>
-	<!-- Call opacity on hover images from carousel-->
-	<script type="text/javascript">
+
+		/* 图解准东 */
+		$(document).ready(function() {
+			$("img.imgOpa").hover(function() {
+				$(this).stop().animate({
+					opacity : "0.6"
+				}, 'slow');
+			}, function() {
+				$(this).stop().animate({
+					opacity : "1.0"
+				}, 'slow');
+			});
+		});
+		
 		$(window).load(function() {
 			$('#recent-projects').carouFredSel({
 				responsive : true,

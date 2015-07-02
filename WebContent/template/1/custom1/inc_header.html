@@ -24,7 +24,7 @@
 									[@NodePage parentId=86 pageSize=5 page=2;list]
 										[#list list.content as cnode]
 											[#assign node_count=node_count+1 /]
-											<a class="text-info" href="${cnode.url}">${cnode.name}</a>[#if node_count < 5] |[/#if] 
+											<a class="text-info" href="${cnode.url}">${cnode.name}</a>[#if node_count < 5] |[#else]<br>[/#if] 
 										[/#list]
 									[/@NodePage]
 								</p>
