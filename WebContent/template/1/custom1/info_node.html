@@ -8,66 +8,125 @@
 <meta name="keywords" content="${info.title},${site.fullNameOrName}">
 <meta name="description" content="${info.title},${site.fullNameOrName}">
 <meta name="author" content="${site.fullNameOrName}">
-<!-- Le styles -->
-<script src="http://api.map.baidu.com/components?ak=NaV8UEbxNpj6qIq6cT3itOhC&v=1.0"></script>
-<script src="_files/js/jquery.js"></script>
-<link href="_files/css/bootstrap.css" rel="stylesheet">
-<link href="_files/css/style.css" rel="stylesheet">
-<link href="_files/css/camera.css" rel="stylesheet">
-<link href="_files/css/icons.css" rel="stylesheet">
-<link rel="stylesheet" id="main-color" href="_files/css/skin-teal.css"
-	media="screen" />
-<link href="_files/css/bootstrap-responsive.css" rel="stylesheet">
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="_files/js/html5shiv.js"></script>
-    <![endif]-->
-<!-- Fav and touch icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="_files/img/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="_files/img/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="_files/img/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed"
-	href="_files/img/ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="_files/img/ico/favicon.png">
+[#include "inc_head.html" /]
 </head>
 <body data-spy="scroll" data-target=".main_h" class="boxed">
-	<!-- 此模板为带左边栏目的内容页 -->
 	<!-- 顶部隐藏导航 -->
 	[#include "inc_top.html" /]
-	<div class="body">
-		[#include "inc_header.html"/]
+	<div class="body" style="width: 100%;">
+		<!-- header，导航 -->
+		[#include "inc_header.html" /]
+		<div class="text-center">
+			<img src="_files/img/sha.png" class="slidershadow" alt="">
+		</div>
+		<!-- /end header -->
 		<div class="container">
-			<div class="row-fluid">
-				<div class="text-center">
-					<img src="_files/img/sha.png" class="slidershadow" alt="">
+			<div class="row-fluid news-boder">
+				<div class="span12 ">
+					<!-- 面包屑 -->
+					<ul class="breadcrumb" style="margin-bottom: 0px;">
+						[#list node.hierarchy as n]
+							[#if n_has_next]
+								[#if n.id != 85 && n.id != 86]
+								<li><a href="${n.url}">${n.name}</a><span class="divider">/</span></li>
+								[/#if]
+							[#else]<li class="active">${node.name}</li>
+							[/#if]
+						[/#list]
+					</ul>
 				</div>
 			</div>
-			<div class="row-fluid">
-				[#include "inc_left_node.html"]
-				<div class="span9">
-					<ul class="breadcrumb" style="margin-bottom: 5px;">
-						[#list node.hierarchy as n]
-							<li><a href="${n.url}">${n.name}</a><span class="divider">/</span></li>
-						[/#list]
-						<li class="active">正文</li>
-					</ul>
-					[#include "inc_info.html"]
+			<div class="row-fluid news-boder">
+				<div class="span12 ">
+					<div class="row-fluid news-wei">
+						<!-- 左侧栏目 -->
+						[#include "inc_left_node.html" /]
+						<div class="span9 news-c">
+							<div class="text-center2">
+								<h2>${info.title}</h2>
+								<div class="entry-meta">
+									<span class="entry-date">${info.publishDate?string('yyyy-MM-dd')}</span> <span
+										class="pull-right">浏览次数 <span id="info_views"></span>
+									</span>
+								</div>
+								</br>
+								<div class="newContent">
+									[#if info.video??]
+										<div style="text-align:center; margin-bottom:20px;">
+											<div id="a1"></div>
+											<script type="text/javascript">
+											    var flashvars={
+											    		f:'${info.video}',
+											    		c:0
+											    	};
+											    CKobject.embedSWF('_files/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',flashvars);      
+											</script>
+										</div>
+									[/#if]
+									[#noescape]${text}[/#noescape]
+								</div>
+								<hr>
+								<div class="bdsharebuttonbox">
+									<a href="#" class="bds_more" data-cmd="more"></a> <a
+										title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
+									<a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+									<a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a>
+									<a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>
+									<a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+								</div>
+							</div>
+							<div class="news-next">
+								<p>
+									[@InfoPrev id=info.id;i]
+							         	[#if i??]
+											<span>上一篇：</span><a href="${i.url}">${i.title!}</a>
+											<samp>  ${i.publishDate?string('yyyy-MM-dd')}</samp>
+							         	[#else]
+							         		<span>上一篇：没有了</span>
+							        	[/#if]
+								 	[/@InfoPrev]
+								</p>
+								<p>
+								 	[@InfoNext id=info.id;i]
+						         	[#if i??]
+										<span>下一篇：</span><a href="${i.url}">${i.title!}</a>
+										<samp>  ${i.publishDate?string('yyyy-MM-dd')}</samp>
+						         	[#else]
+										<span>下一篇：没有了</span>
+						         	[/#if]
+								 	[/@InfoNext ]
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		[#include "inc_footer.html" /]
 	</div>
+	
+	<script src="_files/js/jquery.js"></script>
 	<script src="_files/js/bootstrap.js"></script>
 	<script src="_files/js/plugins.js"></script>
 	<script src="_files/js/custom.js"></script>
 	<script src="_files/js/common.js"></script>
 	<script type="text/javascript">
+		window._bd_share_config = {
+				"common" : {
+					"bdSnsKey" : {},
+					"bdText" : "",
+					"bdMini" : "2",
+					"bdMiniList" : false,
+					"bdPic" : "",
+					"bdStyle" : "0",
+					"bdSize" : "24"
+				},
+				"share" : {}
+			};
 		$(document).ready(function(){
-			$("#node_${node.number}").addClass('selected');
 			$("#node_header_${node_header_active}").addClass("active");
+			with(document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+			$("#info_views").load("${ctx}/info_views/${info.id}.jspx?d="+new Date()*1);
 		});
 	</script>
 </body>

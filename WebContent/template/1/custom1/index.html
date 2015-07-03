@@ -18,7 +18,7 @@
 			<div class="container">
 				<p style="color: #729DC0;">
 					<span style="float: right; text-align: right;"> <a href="#">添加收藏</a>
-						| <a href="#">设为首页</a> | <a href="login2.html">登录</a></span>
+						| <a href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.xjzd.gov.cn');">设为首页</a> | <a href="login2.html">登录</a></span>
 				</p>
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 						[@InfoList nodeId=36 limit=5 attr="focus";list]
 							[#list list as info]
 								<li>
-									<a href="${info.url}" class="text-info"> ${info.title}…</a>
+									<a href="${info.url}" class="text-info" target="_blank"> ${info.title}…</a>
 									<samp> [${info.publishDate?string('yyyy-MM-dd')}] </samp>
 								</li>
 							[/#list]
@@ -74,7 +74,7 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
@@ -93,7 +93,7 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
@@ -163,7 +163,7 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
@@ -182,7 +182,7 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
@@ -191,7 +191,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Carousel List ================================================== -->
+			
 			<div class="left422">
 				<div class="titleborder ">
 					<div>图解准东</div>
@@ -211,12 +211,12 @@
 											<li>
 												<div class="featured-projects">
 													<div class="featured-projects-image">
-														<a href="${info.url}"><img src="${info.smallImage}"
+														<a href="${info.url}" target="_blank"><img src="${info.smallImage}"
 															class="imgOpa" alt=""></a>
 													</div>
 													<div class="featured-projects-content">
 														<h1>
-															<a href="${info.url}">${info.title}</a>
+															<a href="${info.url}" target="_blank">${info.title}</a>
 														</h1>
 													</div>
 												</div>
@@ -229,7 +229,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- END Carousel List -->
 			<!--第二区新闻-->
 			<div id="content">
 				<div class="boxportfolio3">
@@ -243,7 +242,7 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
@@ -262,7 +261,7 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
@@ -281,19 +280,13 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
 							</ul>
 						</div>
 					</div>
-				</div>
-			</div>
-			<!--广告区（03）-->
-			<div class="row-fluid" style="display: none;">
-				<div class="span12 zdad">
-					<p>广告招商：400-88888888</p>
 				</div>
 			</div>
 			<!--第三区新闻-->
@@ -309,7 +302,7 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
@@ -355,7 +348,7 @@
 									[#list list as info]
 										<li>
 											<span class="icon-file-text-alt"></span>
-											<a href="${info.url}" class="muted">${info.title}……</a>
+											<a href="${info.url}" class="muted" target="_blank">${info.title}……</a>
 										</li>
 									[/#list]
 								[/@InfoList]
