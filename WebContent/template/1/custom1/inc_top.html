@@ -1,20 +1,20 @@
-	<header class="main_h">
-		<div class="container">
-			<div class="row">
-				<img src="_files/img/logo.png" class="toplogo" alt="" />
-				<div class="mobile-toggle">
-					<span></span> <span></span> <span></span>
-				</div>
-				<nav>
-					<ul class="nav" style="text-align: right; padding-right: 40px;">
-						[@NodeList parentId=85;list]
-				        	<li><a href='${ctx}/'>首页</a></li>  
-							[#list list as node]
-			 		 			<li><a href="${node.url}"><span>${node.name}</span></a></li>
-							[/#list]
-						[/@NodeList]
-					</ul>
-				</nav>
+<header class="main_h">
+	<div class="container">
+		<div class="row">
+			<img src="_files/img/logo.png" class="toplogo" alt="" />
+			<div class="mobile-toggle">
+				<span></span> <span></span> <span></span>
 			</div>
+			<nav>
+				<ul class="nav" style="text-align: right; padding-right: 40px;">
+					[@NodeList parentId=85;list]
+			        	<li><a href='${ctx}/'>首页</a></li>  
+						[#list list as node]
+		 		 			<li><a href="${node.url}"><span>${node.name}</span></a></li>
+						[/#list]
+					[/@NodeList]
+				</ul>
+			</nav>
 		</div>
-	</header>
+	</div>
+</header>

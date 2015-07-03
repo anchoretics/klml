@@ -1,0 +1,24 @@
+[#escape x as (x)!?html]
+<div class="span3 ">
+	<ul class="navleft">
+		[#assign has_child=true]
+		[@NodeList parentId=node.id;list]
+			[#list list as cnode]
+				[#assign has_child=false]
+		 			<li><a href="${cnode.url}" id='node_${cnode.id}'><span class=" icon icon-list-ul"></span> ${cnode.name}</a></li>
+			[/#list]
+		[/@NodeList]
+		[#if has_child]
+			[@NodeList parentId=node.parent.id;list]
+				[#list list as cnode]
+					[#if cnode.id = node.id]
+						<li><span class="icon-list-ul"></span> ${cnode.name}</li>
+					[#else]
+						<li><a href="${cnode.url}" id='node_${cnode.id}'><span class=" icon icon-list-ul"></span> ${cnode.name}</a></li>
+					[/#if]
+				[/#list]
+			[/@NodeList]
+		[/#if]
+	</ul>
+</div>
+[/#escape]

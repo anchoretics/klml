@@ -1,0 +1,31 @@
+[#assign start=page-4/]
+[#if start<1]
+	[#assign start=1/]
+[/#if]
+[#assign end=start+8/]
+[#if end>pagedList.totalPages]
+	[#assign end=pagedList.totalPages/]
+[/#if]
+[#if end<1]
+	[#assign end=1/]
+[/#if]
+[#if end-start<8]
+	[#assign start=end-8/]
+[/#if]
+[#if start<1]
+	[#assign start=1/]
+[/#if]
+
+<div class="pagination" style="text-align: right">
+	<ul>
+		[#if page>1]
+			<li><a href="${paging(page-1)}">«</a></li>
+		[/#if]
+		[#list start..end as p]
+			[#if page=p]<li class="active"><a>${p}</a></li>[#else]<li><a href="${paging(p)}">${p}</a></li>[/#if]
+		[/#list]
+		[#if page < pagedList.totalPages]
+			<li><a href="${paging(page+1)}">»</a></li>
+		[/#if]
+	</ul>
+</div>

@@ -1,33 +1,13 @@
+[#escape x as (x)!?html]
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>国家级新疆准东经济技术开发区官网</title>
+<title>${site.fullNameOrName}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<!-- Le styles -->
-<link href="_files/css/bootstrap.css" rel="stylesheet">
-<link href="_files/css/style.css" rel="stylesheet">
-<link href="_files/css/camera.css" rel="stylesheet">
-<link href="_files/css/icons.css" rel="stylesheet">
-<link href="_files/css/skin-orange.css" rel="stylesheet" id="main-color"
-	media="screen" />
-<link href="_files/css/bootstrap-responsive.css" rel="stylesheet">
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="_files/js/html5shiv.js"></script>
-    <![endif]-->
-<!-- Fav and touch icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="_files/img/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="_files/img/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="_files/img/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed"
-	href="_files/img/ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="_files/img/ico/favicon.png">
+	[#include "inc_head.html" /]
 </head>
 <body data-spy="scroll" data-target=".main_h" class="boxed">
 	<!-- 顶部隐藏导航 -->
@@ -175,7 +155,7 @@
 				<div class="boxportfolio3">
 					<div class="inneritem" style="padding: 0; border: 0;">
 						<h1 class="faqstitle">
-							<span class="icon-tasks"></span> 党政建设
+							<span class="icon-tasks"></span> 党群建设
 						</h1>
 						<div class="faqs">
 							<ul>
@@ -278,22 +258,14 @@
 						</h1>
 						<div class="faqs">
 							<ul>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">自治区安监局就开生产工作提七点要……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">魅力准东·舞动青春”啦啦操比赛”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">关于羽毛球队队员招募的通知 ……</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">中石化准东80亿方/年煤制气项目自建供水</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东支线机场选址初步确定</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区召开循环经济试点园区谈会</a></li>
-								<li><span class="icon-file-text-alt"></span> <a
-									href="news.html" class="muted">准东开发区加快推进“疆电外送”</a></li>
+								[@InfoList nodeId=134 limit=8;list]
+									[#list list as info]
+										<li>
+											<span class="icon-file-text-alt"></span>
+											<a href="${info.url}" class="muted">${info.title}……</a>
+										</li>
+									[/#list]
+								[/@InfoList]
 							</ul>
 						</div>
 					</div>
@@ -442,9 +414,10 @@
 	<script src="_files/js/common.js"></script>
 	<script src="_files/js/weixin.js"></script>
 	<!-- CALL CAMERA SLIDER -->
-	<script>
-		/* 滚动新闻大图 */
-		$(function() {
+	<script type="text/javascript">
+		
+		$(document).ready(function() {
+			/* 滚动新闻大图 */
 			$('#camera_wrap_4').camera({
 				height : 'auto',
 				loader : 'bar',
@@ -458,11 +431,20 @@
 				overlayer : true,
 				imagePath : '_files/img/'
 			});
+			/* 图解准东 */
+			$("img.imgOpa").hover(function() {
+				$(this).stop().animate({
+					opacity : "0.6"
+				}, 'slow');
+			}, function() {
+				$(this).stop().animate({
+					opacity : "1.0"
+				}, 'slow');
+			});
 		});
 		
-		<!--BEGIN DEMO PANEL -->
-		<!--瀑布流-->
 		$(window).load(function() {
+			<!--瀑布流方式显示新闻块儿-->
 			var $container = $('#content')
 			// initialize Isotope
 			$container.isotope({
@@ -482,22 +464,8 @@
 					}
 				});
 			});
-		});
-
-		/* 图解准东 */
-		$(document).ready(function() {
-			$("img.imgOpa").hover(function() {
-				$(this).stop().animate({
-					opacity : "0.6"
-				}, 'slow');
-			}, function() {
-				$(this).stop().animate({
-					opacity : "1.0"
-				}, 'slow');
-			});
-		});
-		
-		$(window).load(function() {
+			
+			/* 图解准东 */
 			$('#recent-projects').carouFredSel({
 				responsive : true,
 				width : '100%',
@@ -528,3 +496,4 @@
 	</script>
 </body>
 </html>
+[/#escape]

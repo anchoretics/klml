@@ -1,0 +1,33 @@
+[#escape x as (x)!?html]
+<div class="row-fluid">
+	<div class="span12">
+		<div class="text-center" style="margin-top: 40px; margin-bottom: 100px;">
+			<h2>${info.fullTitleOrTitle}</h2>
+			<div class="entry-meta">
+				<span class="entry-date">${info.publishDate?string('yyyy-MM-dd')}</span> <span class="pull-right">浏览次数
+					<span id="info_views"></span>
+					<script type="text/javascript">
+						$("#info_views").load("${ctx}/info_views/${info.id}.jspx?d="+new Date()*1);
+					</script></span>
+				</span>
+			</div>
+			<br>
+			<div class="newContent">
+		       [#if info.video??]
+		       <div style="text-align:center; margin-bottom:20px;">
+		        <div id="a1"></div>
+						<script type="text/javascript">
+		           var flashvars={
+		            f:'${info.video}',
+		            c:0
+		            };
+		          CKobject.embedSWF('_files/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',flashvars);      
+		        </script>
+		       </div>
+		       [/#if]
+ 	   	 		[#noescape]${text}[/#noescape]
+			</div>
+		</div>
+	</div>
+</div>
+[/#escape]

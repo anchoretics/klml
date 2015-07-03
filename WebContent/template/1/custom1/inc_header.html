@@ -52,12 +52,13 @@
 						 		 			[/#if]
 										[/#list]
 									[/@NodeList]
+											<li class="divider-vertical"></li>
 								</ul>
 								<form id="search" action="${ctx}/search.jspx" method="GET">
 									<input type="text" id="s_q"
 										onfocus="if(this.value =='查找新闻' ) this.value=''"
 										onblur="if(this.value=='') this.value='查找新闻'" [#if q_value??]value="${q_value}"[#else]value="查找新闻"[/#if]
-										name="q"> <a href="#" onclick="submit_search();></a>
+										name="q"> <a href="#" onclick="submit_search();"></a>
 										 <script type="text/javascript">
 										 	function submit_search(){
 										 		if($('#s_q').val() == "查找清真餐饮企业"){
