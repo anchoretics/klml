@@ -1,0 +1,135 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>${site.fullNameOrName}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+[#include "inc_head.html" /]
+</head>
+
+<body data-spy="scroll" data-target=".main_h" class="boxed">
+	<!-- 顶部隐藏导航 -->
+	[#include "inc_top.html" /]
+	<div class="body" style="width: 100%;">
+		<!-- header，导航 -->
+		[#include "inc_header.html" /]
+		<div class="text-center">
+			<img src="_files/img/sha.png" class="slidershadow" alt="">
+		</div>
+		<!-- /end header -->
+		<div class="container">
+			<div class="row-fluid news-boder">
+				<div class="span12 ">
+					<!-- 面包屑 -->
+					<ul class="breadcrumb" style="margin-bottom: 0px;">
+						[#list node.hierarchy as n]
+							[#if n_has_next]
+								[#if n.id != 85 && n.id != 86]
+								<li><a href="${n.url}">${n.name}</a><span class="divider">/</span></li>
+								[/#if]
+							[#else]<li class="active">${node.name}</li>
+							[/#if]
+						[/#list]
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid news-boder">
+				<div class="span12 ">
+					<div class="row-fluid news-wei">
+						<!-- 左侧栏目 -->
+						[#include "inc_left_node.html" /]
+						<!-- 右侧 内容 -->
+						
+						<div class="span9 news-c">
+							<div class="text-center2">
+								[#assign info=0/]
+								[#assign info_count=0/]
+								[@InfoList nodeId=node.id attr='recommend' limit=1;list]
+									[#list list as info]
+										[#assign info=info/]
+										[#assign info_count=1/]
+										<h2>${node.name}</h2>
+										<div class="entry-meta">
+											<span class="entry-date">${info.publishDate?string('yyyy-MM-dd')}</span> <span
+												class="pull-right">浏览次数 <span id="info_views"></span>
+											</span>
+										</div>
+										</br>
+										<div class="newContent">
+											[#if info.video??]
+												<div style="text-align:center; margin-bottom:20px;">
+													<div id="a1"></div>
+													<script type="text/javascript">
+													    var flashvars={
+													    		f:'${info.video}',
+													    		c:0
+													    	};
+													    CKobject.embedSWF('_files/ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',flashvars);      
+													</script>
+												</div>
+											[/#if]
+											[#noescape]${info.text}[/#noescape]
+										</div>
+										<hr>
+										<div class="bdsharebuttonbox">
+											<a href="#" class="bds_more" data-cmd="more"></a> <a
+												title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
+											<a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+											<a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a>
+											<a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>
+											<a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+										</div>
+									[/#list]
+								[/@InfoList]
+								[#if info_count==0]
+									<h2>${node.name}</h2>
+									<div class="entry-meta">
+										<span class="entry-date"></span> <span
+											class="pull-right">浏览次数 <span id="info_views"></span>
+										</span>
+									</div>
+									</br>
+									<div class="newContent">
+									</div>
+									<hr>
+								[/#if]
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		[#include "inc_footer.html" /]
+	</div>
+
+	<script src="_files/js/jquery.js"></script>
+	<script src="_files/js/bootstrap.js"></script>
+	<script src="_files/js/plugins.js"></script>
+	<script src="_files/js/custom.js"></script>
+	<script src="_files/js/common.js"></script>
+	<script type="text/javascript">
+		$("#node_header_${node_header_active}").addClass("active");
+		window._bd_share_config = {
+				"common" : {
+					"bdSnsKey" : {},
+					"bdText" : "",
+					"bdMini" : "2",
+					"bdMiniList" : false,
+					"bdPic" : "",
+					"bdStyle" : "0",
+					"bdSize" : "24"
+				},
+				"share" : {}
+			};
+		$(document).ready(function(){
+			$("#node_header_${node_header_active}").addClass("active");
+			with(document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+			$("#info_views").load("${ctx}/info_views/${info.id}.jspx?d="+new Date()*1);
+		});
+	</script>
+</body>
+</html>
+[/#escape]
